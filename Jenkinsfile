@@ -5,15 +5,8 @@ node {
         git url: 'https://github.com/jordanglassman/forrester-echo-backend.git'
     }
     stage('build') {
-        dir('module-a') {
-            withMaven(maven: 'Maven350') {
-                sh "mvn clean package"
-            }
-        }
-        dir('module-b') {
-            withMaven(maven: 'Maven350') {
-                sh "mvn clean package"
-            }
+        withMaven(maven: 'Maven350') {
+            sh "mvn clean package"
         }
     }
     if(params.FAIL_BUILD) {
